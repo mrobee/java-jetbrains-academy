@@ -13,17 +13,17 @@ public class Cinema {
         System.out.println("Enter the number of seats in each row:");
         int columns = Integer.parseInt(scanner.nextLine());
 
-        int price;
-        int seats = rows * columns;
-        if (seats <= 60) {
-            price = 10 * seats;
-        } else {
-            int firstHalf = rows / 2;
-            price = firstHalf * columns * 10;
-            price += (rows - firstHalf) * columns * 8;
-        }
+        RoomManager roomManager = new RoomManager(rows, columns);
+        roomManager.printSeats(0, 0);
 
-        System.out.println("Total income:");
-        System.out.println("$" + price);
+        System.out.println("Enter a row number:");
+        int row = Integer.parseInt(scanner.nextLine());
+
+        System.out.println("Enter a seat number in that row:");
+        int column = Integer.parseInt(scanner.nextLine());
+
+        System.out.printf("Ticket price: $%d\n\n", roomManager.getPrice(row));
+        roomManager.printSeats(row, column);
     }
+    
 }
