@@ -8,16 +8,7 @@ public class RoomManager {
     public RoomManager(int rows, int columns) {
         this.rows = rows;
         this.columns = columns;
-        initSeats();
-    }
-
-    private void initSeats() {
         this.chosenSeats = new boolean[rows][columns];
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < columns; j++) {
-                this.chosenSeats[i][j] = false;
-            }
-        }
     }
 
     public void addChosenSeats(int row, int column) {
