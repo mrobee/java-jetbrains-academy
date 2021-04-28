@@ -11,8 +11,49 @@ public class RoomManager {
         this.chosenSeats = new boolean[rows][columns];
     }
 
-    public void addChosenSeats(int row, int column) {
+    public boolean addChosenSeats(int row, int column) {
+        if (this.chosenSeats[row - 1][column - 1]) {
+            return false;
+        }
         this.chosenSeats[row - 1][column - 1] = true;
+        return true;
+    }
+
+    public int getTotalChosenSeats() {
+        int total = 0;
+        for (int i = 0; i < this.rows; i++) {
+            for (int j = 0; j < this.columns; j++) {
+                if (this.chosenSeats[i][j]) {
+                    total++;
+                }
+            }
+        }
+        return total;
+    }
+
+    public double getOccupancyRate() {
+        int chosenSeats = getTotalChosenSeats();
+        return (double) chosenSeats / (this.rows * this.columns) * 100.0;
+    }
+
+    public int getCurrentIncome() {
+        int total = 0;
+        for (int i = 1; i <= this.rows; i++) {
+            for (int j = 1; j <= this.columns; j++) {
+                if (this.chosenSeats[i - 1][j - 1]) {
+                    total += getPrice(i);
+                }
+            }
+        }
+        return total;
+    }
+
+    public int getTotalIncome() {
+        int total = 0;
+        for (int i = 0; i < this.rows ; i++) {
+            total += getPrice(i + 1) * this.columns;
+        }
+        return total;
     }
 
     public int getPrice(int row) {
@@ -52,7 +93,7 @@ public class RoomManager {
 
     private void printHeader() {
         System.out.println("Cinema:");
-        System.out.printf(" ");
+        System.out.print(" ");
         for (int i = 1; i <= columns; i++) {
             System.out.printf(" %d", i);
         }
