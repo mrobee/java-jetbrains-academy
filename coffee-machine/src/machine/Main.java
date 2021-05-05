@@ -5,28 +5,42 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        CoffeeMachine machine = new CoffeeMachine(400, 540, 120, 9, 550);
 
-        System.out.println("Write how many ml of water the coffee machine has:");
-        int water = Integer.parseInt(scanner.nextLine());
+        machine.printState();
 
-        System.out.println("Write how many ml of milk the coffee machine has:");
-        int milk = Integer.parseInt(scanner.nextLine());
+        System.out.printf("Write action (buy, fill, take)");
+        String action = scanner.nextLine();
 
-        System.out.println("Write how many grams of coffee beans the coffee machine has:");
-        int coffeeBeans = Integer.parseInt(scanner.nextLine());
+        switch (action) {
+            case "buy":
+                System.out.println("What do you want to buy? 1 - espresso, 2 - latte, 3 - cappuccino:");
+                int coffeeType = Integer.parseInt(scanner.nextLine());
+                machine.buyCoffee(coffeeType);
+                break;
+            case "fill":
+                System.out.println("Write how many ml of water you want to add:");
+                int water = Integer.parseInt(scanner.nextLine());
 
-        System.out.println("Write how many cups of coffee you will need:");
-        int cupsRequested = Integer.parseInt(scanner.nextLine());
+                System.out.println("Write how many ml of milk you want to add:");
+                int milk = Integer.parseInt(scanner.nextLine());
 
-        CoffeeMachine machine = new CoffeeMachine(water, milk, coffeeBeans);
-        int cupsAvailable = machine.calculateCups();
+                System.out.println("Write how many grams of coffee beans you want to add:");
+                int coffeeBeans = Integer.parseInt(scanner.nextLine());
 
-        if (cupsAvailable < cupsRequested) {
-            System.out.printf("No, I can make  only %d cup(s) of coffee\n",  cupsAvailable);
-        } else if (cupsAvailable > cupsRequested) {
-            System.out.printf("Yes, I can make that amount of coffee (and even %d more than that)\n", cupsAvailable - cupsRequested);
-        } else {
-            System.out.println("Yes, I can make that amount of coffee");
+                System.out.println("Write how many disposable cups of coffee you want to add:");
+                int cups = Integer.parseInt(scanner.nextLine());
+
+                machine.fillIngredients(water, milk, coffeeBeans, cups);
+                break;
+            case "take":
+                System.out.printf("I have you $%d\n", machine.takeMoney());
+                break;
+            default:
+                System.out.println("Error. Unknown action.");
+                break;
         }
+
+        machine.printState();
     }
 }
