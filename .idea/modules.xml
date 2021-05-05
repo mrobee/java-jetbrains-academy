@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/bulls-and-cows/bulls-and-cows.iml" filepath="$PROJECT_DIR$/bulls-and-cows/bulls-and-cows.iml" />
       <module fileurl="file://$PROJECT_DIR$/cinema-room-manager/cinema-room-manager.iml" filepath="$PROJECT_DIR$/cinema-room-manager/cinema-room-manager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/coffee-machine/coffee-machine.iml" filepath="$PROJECT_DIR$/coffee-machine/coffee-machine.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/java-jetbrains-academy.iml" filepath="$PROJECT_DIR$/.idea/java-jetbrains-academy.iml" />
       <module fileurl="file://$PROJECT_DIR$/numeral-system-converter/numeral-system-converter.iml" filepath="$PROJECT_DIR$/numeral-system-converter/numeral-system-converter.iml" />
     </modules>
